@@ -348,10 +348,6 @@ static void ComputerMove(Piece **board, size_t width, size_t height, GameStats *
     stats->moves[stats->count++] = (RecordedMove){'C', cx, cy, bestX, bestY};
     stats->compKingMoves++;
   }
-  else
-  {
-    printf("Computer cannot move.\n");
-  }
 }
 
 void PlayGame(size_t width, size_t height)
@@ -373,6 +369,18 @@ void PlayGame(size_t width, size_t height)
     if (isCheckmate(board, width, height))
     {
       printf("\nCheckmate! You win!\n");
+      break;
+    }
+
+    if (isOnlyKings(board, width, height))
+    {
+      printf("\nDraw by insufficient material.\n");
+      break;
+    }
+
+    if (isStalemate(board, width, height))
+    {
+      printf("\nStalemate! Game is drawn.\n");
       break;
     }
 
@@ -512,18 +520,6 @@ void PlayGame(size_t width, size_t height)
       stats.checks++;
 
     ComputerMove(board, width, height, &stats);
-
-    if (isOnlyKings(board, width, height))
-    {
-      printf("\nDraw by insufficient material.\n");
-      break;
-    }
-
-    if (isStalemate(board, width, height))
-    {
-      printf("\nStalemate! Game is drawn.\n");
-      break;
-    }
   }
 
   printf("\n--- Game Over ---\n");
