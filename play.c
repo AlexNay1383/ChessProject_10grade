@@ -353,9 +353,9 @@ static void ComputerMove(Piece **board, size_t width, size_t height, GameStats *
 void PlayGame(size_t width, size_t height)
 {
   unsigned int seed = (unsigned int)time(NULL);
-  Piece **board = malloc(width * sizeof(Piece *));
+  Piece **board = (Piece**) malloc(width * sizeof(Piece *));
   for (size_t i = 0; i < width; ++i)
-    board[i] = malloc(height * sizeof(Piece));
+    board[i] = (Piece*)malloc(height * sizeof(Piece));
 
   InitializeBoard(board, width, height, seed);
 

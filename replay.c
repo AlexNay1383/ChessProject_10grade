@@ -41,9 +41,9 @@ void ReplayGame(const char *filename)
   fscanf(f, "Seed %u\n", &seed);
   fscanf(f, "Board %llu %llu\n", &width, &height);
 
-  Piece **board = malloc(width * sizeof(Piece *));
+  Piece **board = (Piece**)malloc(width * sizeof(Piece *));
   for (size_t i = 0; i < width; ++i)
-    board[i] = malloc(height * sizeof(Piece));
+    board[i] = (Piece*)malloc(height * sizeof(Piece));
 
   InitializeBoard(board, width, height, seed);
   printf("\n--- Replay ---\n");
