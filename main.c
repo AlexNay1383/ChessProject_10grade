@@ -11,7 +11,7 @@ int main()
   do
   {
     printf("\n1. Start game\n");
-    printf("2. Change board size (currently %zux%zu)\n", width, height);
+    printf("2. Change board size (currently %llux%llu)\n", width, height);
     printf("3. Replay saved game\n");
     printf("4. Exit\n");
     printf("Choice: ");
@@ -28,7 +28,7 @@ int main()
       break;
     case 2:
       printf("Enter board width: ");
-      scanf("%zu", &width);
+      scanf("%llu", &width);
       while ((c = getchar()) != '\n' && c != EOF)
         ;
 
@@ -36,7 +36,7 @@ int main()
         width = 8;
 
       printf("Enter board height: ");
-      scanf("%zu", &height);
+      scanf("%llu", &height);
       while ((c = getchar()) != '\n' && c != EOF)
         ;
 

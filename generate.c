@@ -87,7 +87,7 @@ void PrintBoard(Piece **board, size_t width, size_t height)
 
   for (size_t j = 0; j < height; ++j)
   {
-    printf("%2zu", height - j);
+    printf("%2u", height - j);
     for (size_t i = 0; i < width; ++i)
     {
       char c = '.';
@@ -108,7 +108,7 @@ void PrintBoard(Piece **board, size_t width, size_t height)
       }
       printf(" %c", c);
     }
-    printf(" %zu", height - j);
+    printf(" %llu", height - j);
     printf("\n");
   }
 

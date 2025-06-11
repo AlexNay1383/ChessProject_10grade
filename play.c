@@ -542,7 +542,7 @@ void PlayGame(size_t width, size_t height)
   else
   {
     fprintf(f, "Seed %u\n", seed);
-    fprintf(f, "Board %zu %zu\n", width, height);
+    fprintf(f, "Board %llu %llu\n", width, height);
     for (int i = 0; i < stats.count; i++)
     {
       fprintf(f, "%c %c%d %c%d\n",

@@ -39,7 +39,7 @@ void ReplayGame(const char *filename)
 
   unsigned int seed;
   fscanf(f, "Seed %u\n", &seed);
-  fscanf(f, "Board %zu %zu\n", &width, &height);
+  fscanf(f, "Board %llu %llu\n", &width, &height);
 
   Piece **board = malloc(width * sizeof(Piece *));
   for (size_t i = 0; i < width; ++i)
