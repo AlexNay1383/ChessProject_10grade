@@ -353,9 +353,9 @@ static void ComputerMove(Piece **board, size_t width, size_t height, GameStats *
 void PlayGame(size_t width, size_t height)
 {
   unsigned int seed = (unsigned int)time(NULL);
-  Piece **board = (Piece**) malloc(width * sizeof(Piece *));
+  Piece **board = (Piece **)malloc(width * sizeof(Piece *));
   for (size_t i = 0; i < width; ++i)
-    board[i] = (Piece*)malloc(height * sizeof(Piece));
+    board[i] = (Piece *)malloc(height * sizeof(Piece));
 
   InitializeBoard(board, width, height, seed);
 
@@ -369,18 +369,6 @@ void PlayGame(size_t width, size_t height)
     if (isCheckmate(board, width, height))
     {
       printf("\nCheckmate! You win!\n");
-      break;
-    }
-
-    if (isOnlyKings(board, width, height))
-    {
-      printf("\nDraw by insufficient material.\n");
-      break;
-    }
-
-    if (isStalemate(board, width, height))
-    {
-      printf("\nStalemate! Game is drawn.\n");
       break;
     }
 
@@ -520,6 +508,22 @@ void PlayGame(size_t width, size_t height)
       stats.checks++;
 
     ComputerMove(board, width, height, &stats);
+
+    if (isOnlyKings(board, width, height))
+    {
+      printf("\n\n");
+      PrintBoard(board, width, height);
+      printf("\nDraw by insufficient material.\n");
+      break;
+    }
+
+    if (isStalemate(board, width, height))
+    {
+      printf("\n\n");
+      PrintBoard(board, width, height);
+      printf("\nStalemate! Game is drawn.\n");
+      break;
+    }
   }
 
   printf("\n--- Game Over ---\n");
