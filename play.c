@@ -534,33 +534,36 @@ void PlayGame(size_t width, size_t height)
   printf("Computer king moves: %d\n", stats.compKingMoves);
   printf("Number of checks: %d\n", stats.checks);
 
-  // Bojidar
 
-  // char filename[100];
-  // printf("\nEnter filename to save the game: ");
-  // scanf("%99s", filename);
+  char filename[100];
+  printf("\nEnter filename to save the game: ");
+  scanf("%s", filename);
 
-  // FILE *f = fopen(filename, "w");
-  // if (!f)
-  // {
-  //   printf("Error opening file!\n");
-  // }
-  // else
-  // {
-  //   fprintf(f, "Seed %u\n", seed);
-  //   fprintf(f, "Board %llu %llu\n", width, height);
-  //   for (int i = 0; i < stats.count; i++)
-  //   {
-  //     fprintf(f, "%c %c%d %c%d\n",
-  //             stats.moves[i].piece,
-  //             'A' + stats.moves[i].from_x, (int)(height - stats.moves[i].from_y),
-  //             'A' + stats.moves[i].to_x, (int)(height - stats.moves[i].to_y));
-  //   }
-  //   fclose(f);
-  //   printf("Game saved to '%s'. Returning to menu.\n", filename);
-  // }
+  FILE *f = fopen(filename, "w");
+  if (!f)
+  {
+      printf("Error opening file!\n");
+  }
+  else
+  {
+      fprintf(f, "Seed %u\n", seed);
+      fprintf(f, "Width %llu Height %llu\n", width, height);
+      for (int i = 0; i < stats.count; i++)
+      {
+        fprintf(f, "Move %c %c%d %c%d\n",
+                stats.moves[i].piece,
+                'A' + stats.moves[i].from_x, (int)(height - stats.moves[i].from_y),
+                'A' + stats.moves[i].to_x, (int)(height - stats.moves[i].to_y));
+      }
+      fclose(f);
+      printf("Game saved to '%s'. Returning to menu.\n", filename);
+  }
 
-  // for (size_t i = 0; i < width; ++i)
-  //   free(board[i]);
-  // free(board);
+  for (size_t i = 0; i < width; ++i){
+      free(board[i]);
+  }
+  free(board);
 }
+
+  
+
