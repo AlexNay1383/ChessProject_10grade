@@ -78,42 +78,44 @@ void InitializeBoard(Piece **board, size_t width, size_t height, unsigned int se
   } while (1);
 }
 
-void PrintBoard(Piece **board, size_t width, size_t height)
-{
-  printf("  ");
-  for (size_t i = 0; i < width; ++i)
-    printf(" %c", (int)('A' + i));
-  printf("\n");
+//Krystev
 
-  for (size_t j = 0; j < height; ++j)
-  {
-    printf("%2u", height - j);
-    for (size_t i = 0; i < width; ++i)
-    {
-      char c = '.';
-      switch (board[i][j])
-      {
-      case ROOK:
-        c = 'R';
-        break;
-      case KING:
-        c = 'K';
-        break;
-      case COMP_KING:
-        c = 'C';
-        break;
-      default:
-        c = '.';
-        break;
-      }
-      printf(" %c", c);
-    }
-    printf(" %llu", height - j);
-    printf("\n");
-  }
+// void PrintBoard(Piece **board, size_t width, size_t height)
+// {
+//   printf("  ");
+//   for (size_t i = 0; i < width; ++i)
+//     printf(" %c", (int)('A' + i));
+//   printf("\n");
 
-  printf("  ");
-  for (size_t i = 0; i < width; ++i)
-    printf(" %c", (int)('A' + i));
-  printf("\n");
-}
+//   for (size_t j = 0; j < height; ++j)
+//   {
+//     printf("%2u", height - j);
+//     for (size_t i = 0; i < width; ++i)
+//     {
+//       char c = '.';
+//       switch (board[i][j])
+//       {
+//       case ROOK:
+//         c = 'R';
+//         break;
+//       case KING:
+//         c = 'K';
+//         break;
+//       case COMP_KING:
+//         c = 'C';
+//         break;
+//       default:
+//         c = '.';
+//         break;
+//       }
+//       printf(" %c", c);
+//     }
+//     printf(" %llu", height - j);
+//     printf("\n");
+//   }
+
+//   printf("  ");
+//   for (size_t i = 0; i < width; ++i)
+//     printf(" %c", (int)('A' + i));
+//   printf("\n");
+// }
